@@ -37,6 +37,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
+import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
@@ -238,9 +239,8 @@ public class SwtTree extends AbstractSwtXulContainer implements XulTree {
       setManagedObject( tree );
 
     } else {
-      table =
-          new TableViewer( (Composite) parentComponent.getManagedObject(), SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL
-              | SWT.FULL_SELECTION | SWT.BORDER );
+      table = CheckboxTableViewer.newCheckList( (Composite) parentComponent.getManagedObject(),
+        SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER );
       setManagedObject( table );
     }
     if ( isHierarchical ) {

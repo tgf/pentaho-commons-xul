@@ -16,7 +16,7 @@
   </parent>
 
   <properties>
-    <org.eclipse.swt.version>4.6</org.eclipse.swt.version>
+    <org.eclipse.swt.version>4.9</org.eclipse.swt.version>
     <jface.version>3.3.0-I20070606-0010</jface.version>
     <commons-collections.version>3.2.2</commons-collections.version>
   </properties>

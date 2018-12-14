@@ -34,6 +34,7 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ShellAdapter;
 import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
@@ -162,9 +163,13 @@ public class SwtDialog extends AbstractSwtXulContainer implements XulDialog {
       if ( parentShell == null && parent instanceof XulRoot ) {
         parentShell = (Shell) ( (XulRoot) parent ).getRootObject();
       }
+    } else if ( domContainer.getOuterContext() instanceof Shell ) {
+      parentShell = (Shell) domContainer.getOuterContext();
     }
-    if ( parentShell == null ) {
-      parentShell = new Shell( SWT.SHELL_TRIM );
+    if ( parentShell == null ) { //TODO this is the extra shell on gtk3, probably should never be created
+      parentShell = new Shell( SWT.DIALOG_TRIM  );
+      // Color c = new Color( parentShell.getDisplay(), 255, 0, 255 );
+      // parentShell.setBackground( c );
     }
     return parentShell;
   }
